@@ -164,7 +164,8 @@ try
 
 " === Vim airline ==== "
 " Enable extensions
-let g:airline_extensions = ['branch', 'hunks', 'coc']
+" let g:airline_extensions = ['branch', 'hunks', 'coc']
+let g:airline_extensions = ['coc']
 
 " Update section z to just have line number
 let g:airline_section_z = airline#section#create(['linenr'])
@@ -328,9 +329,12 @@ endfunction
 "   close window if no results
 "   <leader>j - Search current directory for occurences of word under cursor
 nmap ; :Denite buffer -split=floating -winrow=1<CR>
-nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+" nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
+" nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+" nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
+nnoremap <C-g> :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap <C-j> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
@@ -356,7 +360,9 @@ nmap <leader>y :StripWhitespace<CR>
 "   <leader>h - Find and replace
 "   <leader>/ - Claer highlighted search terms while preserving history
 map <leader>h :%s///<left><left>
-nmap <silent> <leader>/ :nohlsearch<CR>
+" nmap <silent> <leader>/ :nohlsearch<CR>
+" Toggle highlighting of search terms - by default highlighting is off
+nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " === Easy-motion shortcuts ==="
 "   <leader>w - Easy-motion highlights first word letters bi-directionally
@@ -388,11 +394,31 @@ set ignorecase
 " if the search string has an upper case letter in it, the search will be case sensitive
 set smartcase
 
+" Find as your type search
+set incsearch
+
+" Don't highlight search terms - but see above to toggle highlighting
+set nohlsearch
+
+" === Other === "
+
 " Automatically re-read file if a change was detected outside of vim
 set autoread
 
 " Enable line numbers
 set number
+
+" enable mouse
+set mouse=a
+if &term =~ '^screen'
+  " tmux knows the extended mouse mode
+  if !has('nvim')
+    set ttymouse=xterm2
+  end
+endif
+
+" Hide the mouse cursor while typing
+set mousehide
 
 " Set backups
 if has('persistent_undo')
@@ -404,7 +430,22 @@ set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
 set noswapfile
 
+function! ToggleVerbose()
+    if !&verbose
+        set verbosefile=vim.log
+        set verbose=15
+    else
+        set verbose=0
+        set verbosefile=
+    endif
+endfunction
+
+
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
+" Load other configuration files
+source ~/.config/nvim/testing.vim
+
