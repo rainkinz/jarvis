@@ -31,6 +31,9 @@ set -g mode-style "fg=colour3"
 set -g prefix C-a
 unbind C-b
 
+# Easily move back to last window
+bind a last-window
+
 # Start windows numbering at 1
 set -g base-index 1
 
@@ -76,8 +79,8 @@ bind K resize-pane -U 5
 bind L resize-pane -R 5
 
 # visual notification of activity in other windows
-setw -g monitor-activity on
-set -g visual-activity on
+setw -g monitor-activity off
+set -g visual-activity off
 
 #########################
 # ***  STATUS BAR   *** #
@@ -95,6 +98,13 @@ set-option -g status-style bright,bg='#1B2B34',fg=default
 set-window-option -g window-status-current-format ''
 set-window-option -g window-status-current-format ''
 set-window-option -g window-status-current-style fg=colour114,bg=default,bright
+
+# == MY CHANGES ==
+set -g status-style bg='#343D46',fg=default,dim
+
+set-window-option -g window-status-current-style bg=default,fg=colour114,bright
+set-window-option -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
+# == MY CHANGES ==
 
 # Configure CPU plugin colors for statusline
 set -g @cpu_low_fg_color "#[fg=green]"

@@ -46,10 +46,16 @@ Plug 'Shougo/neosnippet-snippets'
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
+" Easily comment/uncomment
+Plug 'tpope/vim-commentary'
+
+" Easily rename a file
+Plug 'vim-scripts/Rename'
+
 " === Git Plugins === "
 " Enable git changes to be shown in sign column
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
+" Plug 'mhinz/vim-signify'
+" Plug 'tpope/vim-fugitive'
 
 " === Javascript Plugins === "
 " Typescript syntax highlighting
@@ -71,6 +77,11 @@ Plug 'othree/javascript-libraries-syntax.vim'
 
 " Improved syntax highlighting and indentation
 Plug 'othree/yajs.vim'
+
+" === Ruby Plugins === "
+Plug 'vim-ruby/vim-ruby'
+Plug 'ngmy/vim-rubocop'
+Plug 'janko-m/vim-test'
 
 " === UI === "
 " File explorer

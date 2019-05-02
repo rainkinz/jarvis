@@ -1,13 +1,20 @@
+# To profile start time uncomment this and the corresponding zprof line at the
+# bottom of the file.
+# See: https://blog.jonlu.ca/posts/speeding-up-zsh for more details.
+# and
+# https://carlosbecker.com/posts/speeding-up-zsh/
+#zmodload zsh/zprof
+
 # Path to oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
 # Name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME=""
+ZSH_THEME="robbyrussell"
 
 # TMUX
 # Automatically start tmux
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 
 # Automatically connect to a previous session if it exists
 ZSH_TMUX_AUTOCONNECT=true
@@ -27,11 +34,11 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node brew tmux)
+plugins=(node tmux rbenv)
 
 # User configuration
 # Hide user@hostname if it's expected default user
-DEFAULT_USER="ctay20"
+DEFAULT_USER="brendan"
 prompt_context(){}
 
 # Setting rg as the default source for fzf
@@ -120,8 +127,9 @@ alias ls="colorls -lA --sd"
 source $ZSH/oh-my-zsh.sh
 
 # Set Spaceship as prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_GIT_STATUS_STASHED=''
+# autoload -U promptinit; promptinit
+# prompt spaceship
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_NODE_SHOW=false
+# SPACESHIP_GIT_STATUS_STASHED=''
+# zprof
