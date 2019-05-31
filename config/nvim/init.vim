@@ -43,6 +43,9 @@ set noruler
 " Only one line for command line
 set cmdheight=1
 
+" Show a line at 80 chars
+set colorcolumn=80
+
 " === Completion Settings === "
 
 " Don't give completion messages like 'match 1 of 2'
@@ -129,6 +132,8 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+
+inoremap <silent><expr> <c-space> coc#refresh()
 
 "Close preview window when completion is done.
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -244,12 +249,14 @@ set termguicolors
 set background=dark
 try
   colorscheme OceanicNext
+  " colorscheme jellybeans
 catch
   colorscheme slate
 endtry
 
 " Vim airline theme
 let g:airline_theme='space'
+" let g:airline_theme='base16_spacemacs'
 
 " Add custom highlights in method that is executed every time a
 " colorscheme is sourced
@@ -265,9 +272,6 @@ augroup MyColors
   autocmd!
   autocmd ColorScheme * call MyHighlights()
 augroup END
-
-" Change vertical split character to be a space (essentially hide it)
-set fillchars+=vert:.
 
 " Set preview window to appear at bottom
 set splitbelow
@@ -287,9 +291,14 @@ hi! LineNr ctermfg=NONE guibg=NONE
 hi! SignColumn ctermfg=NONE guibg=NONE
 hi! StatusLine guifg=#16252b guibg=#6699CC
 hi! StatusLineNC guifg=#16252b guibg=#16252b
+" :set fillchars+=stlnc:-
+
+" Change vertical split character to be a space (essentially hide it)
+" set fillchars+=vert:.
+set fillchars+=vert:\│
 
 " Try to hide vertical spit and end of buffer symbol
-hi! VertSplit gui=NONE guifg=#17252c guibg=#17252c
+hi! VertSplit gui=NONE guifg=#343d46 guibg=#17252c
 hi! EndOfBuffer ctermbg=NONE ctermfg=NONE guibg=#17252c guifg=#17252c
 
 " Customize NERDTree directory
@@ -430,6 +439,7 @@ set backupdir=~/.local/share/nvim/backup " Don't put backups in current dir
 set backup
 set noswapfile
 
+" Utility Functions for Editing (TODO: Maybe move these into a separate file)
 function! ToggleVerbose()
     if !&verbose
         set verbosefile=vim.log
@@ -439,7 +449,24 @@ function! ToggleVerbose()
         set verbosefile=
     endif
 endfunction
+autocmd FileType c,cpp,css,dockerfile,eruby,java,javacc,javascript,go,python,sh,xml,yml,clojure,markdown,ruby,scss,yaml autocmd BufWritePre <buffer> if !exists('g:keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
 
+
+
+function! StripTrailingWhitespace()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+let g:vimrubocop_keymap = 0
+nmap <Leader>R :RuboCop<CR>
 
 " Reload icons after init source
 if exists('g:loaded_webdevicons')
