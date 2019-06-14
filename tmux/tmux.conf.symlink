@@ -28,11 +28,11 @@ set -g mode-style "fg=colour3"
 
 # Set Ctrl-a as the default prefix key combination
 # and unbind C-b to free it up
-set -g prefix C-a
-unbind C-b
+set -g prefix C-b
+# unbind C-a
 
 # Easily move back to last window
-bind a last-window
+bind b last-window
 
 # Start windows numbering at 1
 set -g base-index 1
