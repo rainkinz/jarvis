@@ -50,6 +50,9 @@ Plug 'Shougo/echodoc.vim'
 " Easily comment/uncomment
 Plug 'tpope/vim-commentary'
 
+" Easily delete, change and add such surroundings in pairs.
+" Plug 'tpope/vim-surround'
+
 " Easily rename a file
 Plug 'vim-scripts/Rename'
 
@@ -68,6 +71,9 @@ Plug 'mxw/vim-jsx'
 " Generate JSDoc commands based on function signature
 Plug 'heavenshell/vim-jsdoc'
 
+" Plug 'posva/vim-vue'
+Plug 'leafOfTree/vim-vue-plugin'
+
 " === Syntax Highlighting === "
 
 " Syntax highlighting for nginx
@@ -84,12 +90,17 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'ngmy/vim-rubocop'
 Plug 'janko-m/vim-test'
 
+Plug 'kana/vim-textobj-user'
+Plug 'nelstrom/vim-textobj-rubyblock'
+
 " === UI === "
 " File explorer
 Plug 'scrooloose/nerdtree'
 
 " Colorscheme
 Plug 'mhartington/oceanic-next'
+Plug 'KKPMW/sacredforest-vim'
+Plug 'nanotech/jellybeans.vim'
 
 " Customized vim status line
 Plug 'vim-airline/vim-airline'
