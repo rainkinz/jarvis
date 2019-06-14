@@ -342,8 +342,8 @@ nmap ; :Denite buffer -split=floating -winrow=1<CR>
 " nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
 " nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
 nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
-nnoremap <C-g> :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-nnoremap <C-j> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+nnoremap <C-g> :<C-u>Denite grep:. -no-empty<CR>
+nnoremap <C-j> :<C-u>DeniteCursorWord grep:.<CR>
 
 " === Nerdtree shorcuts === "
 "  <leader>n - Toggle NERDTree on/off
@@ -472,6 +472,9 @@ nmap <Leader>R :RuboCop<CR>
 if exists('g:loaded_webdevicons')
   call webdevicons#refresh()
 endif
+
+command! -range=% HashRocket silent execute <line1>.','.<line2>.'s/:\(\w\+\)\s*=>\s*/\1: /g'
+command! -range=% SingleQuote silent execute <line1>.','.<line2>.'s/"/''/g'
 
 " Load other configuration files
 source ~/.config/nvim/testing.vim
