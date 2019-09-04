@@ -42,13 +42,26 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 "let g:dispatch_quickfix_height=5
 "let g:dispatch_tmux_height=5
-"if filereadable(expand("bin/rspec-docker"))
-"  let g:rspec_command = "Dispatch bin/rspec-docker {spec}"
-"elseif filereadable(expand("bin/rspec"))
-"  let g:rspec_command = "Dispatch TEST_DB_HOST=localhost bin/rspec {spec}"
-"else  
-"  let g:rspec_command = "Dispatch TEST_DB_HOST=localhost bundle exec rspec {spec}"
-"endif
+" if filereadable(expand("bin/rspec-docker"))
+"   let g:rspec_command = "Dispatch bin/rspec-docker {spec}"
+" " elseif filereadable(expand("bin/rspec"))
+" "   let g:rspec_command = "Dispatch TEST_DB_HOST=localhost bin/rspec {spec}"
+" " else
+" "   let g:rspec_command = "Dispatch TEST_DB_HOST=localhost bundle exec rspec {spec}"
+" endif
+
+function! DockerRspcTransform(cmd) abort
+  if filereadable(expand("bin/rspec-docker"))
+    echo "Running with docker"
+    return "docker-compose exec web " . a:cmd
+  else
+    echo "NOT running with docker"
+    return a:cmd
+  endif
+endfunction
+
+let g:test#custom_transformations = {'rspec': function('DockerRspcTransform')}
+let g:test#transformation = 'rspec'
 
 " map <Leader>T :call RunCurrentSpecFile()<CR>
 " map <Leader>t :call RunNearestSpec()<CR>

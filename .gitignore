@@ -6,8 +6,16 @@ tags
 
 tmp/*
 
+
+gitconfig.local.symlink
 vimrc.local
-config/nvim/plugged
-config/nvim/autoload/plug.vim
 backup/
 *.log
+
+# Installed by plug
+config/nvim/autoload
+config/nvim/plugged
+config/nvim/autoload/plug.vim
+
+# Ignore ruby for now
+ruby/*
