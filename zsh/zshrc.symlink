@@ -34,7 +34,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(node tmux rbenv)
+plugins=(node tmux rbenv dotenv git)
 
 # User configuration
 # Hide user@hostname if it's expected default user
@@ -126,10 +126,6 @@ alias ls="colorls -lA --sd"
 
 source $ZSH/oh-my-zsh.sh
 
-# Set Spaceship as prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-# SPACESHIP_PACKAGE_SHOW=false
-# SPACESHIP_NODE_SHOW=false
-# SPACESHIP_GIT_STATUS_STASHED=''
-# zprof
+source "$HOME/.aliases.local"
+
+export PATH="/usr/local/sbin:$PATH"

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+INSTALLDIR=$PWD
+
 echo "---------------------------------------------------------"
 echo "$(tput setaf 2)JARVIS: Linking symlink files.$(tput sgr 0)"
 echo "---------------------------------------------------------"
@@ -7,6 +9,9 @@ echo "---------------------------------------------------------"
 linkables=$( find -H "$INSTALLDIR" -maxdepth 3 -name '*.symlink' )
 for file in $linkables ; do
   target="$HOME/.$( basename $file '.symlink' )"
+
+  echo "Installing: $file => $target"
+
   if [ -e $target ]; then
     echo "---------------------------------------------------------"
     echo "$(tput setaf 3)JARVIS: ~${target#$HOME} already exists... Skipping.$(tput sgr 0)"
