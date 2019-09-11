@@ -466,25 +466,6 @@ function! s:denite_my_settings() abort
   \ denite#do_map('open_filter_buffer')
 endfunction
 
-" ======= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-" MY CHANGES
-" ==================================================
-" nmap ; :Denite buffer -split=floating -winrow=1<CR>
-" " nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-" " nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-" " nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-" nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
-" nnoremap <C-g> :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-" nnoremap <C-j> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-" >>>>>>> Updated tmux.conf to work with 2.9a
-nmap ; :Denite buffer -split=floating -winrow=1<CR>
-" nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-" nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-" nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-nmap <C-p> :Denite file/rec -split=floating -winrow=1<CR>
-nnoremap <C-g> :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-nnoremap <C-j> :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-
 " ctrl-n and ctrl-p to move down and up the denite menus
 " This seems to be the default.
 " call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
