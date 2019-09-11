@@ -94,6 +94,12 @@ Plug 'janko-m/vim-test'
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" === Elixir Plugins === "
+Plug 'elixir-editors/vim-elixir'
+
+" === Terraform Plugins === "
+Plug 'hashivim/vim-terraform'
+
 " === UI === "
 " File explorer
 Plug 'scrooloose/nerdtree'

@@ -6,8 +6,9 @@ echo "---------------------------------------------------------"
 echo "$(tput setaf 2)JARVIS: Linking symlink files.$(tput sgr 0)"
 echo "---------------------------------------------------------"
 
-linkables=$( find -H "$INSTALLDIR" -maxdepth 3 -name '*.symlink' )
-for file in $linkables ; do
+# linkables=$( find -H "$INSTALLDIR" -maxdepth 3 -name '*.symlink' )
+#for file in $linkables ; do
+for file in $INSTALLDIR/**/*.symlink; do
   target="$HOME/.$( basename $file '.symlink' )"
 
   echo "Installing: $file => $target"

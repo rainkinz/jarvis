@@ -20,3 +20,4 @@ config/nvim/autoload/plug.vim
 
 # Ignore ruby for now
 ruby/*
+dots

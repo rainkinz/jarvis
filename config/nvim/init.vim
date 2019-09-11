@@ -594,7 +594,7 @@ function! ToggleVerbose()
         set verbosefile=
     endif
 endfunction
-autocmd FileType c,cpp,css,dockerfile,eruby,java,javacc,javascript,go,python,sh,xml,yml,clojure,markdown,ruby,scss,yaml autocmd BufWritePre <buffer> if !exists('g:keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+autocmd FileType c,cpp,css,dockerfile,elixir,eruby,java,javacc,javascript,go,python,sh,typescript,xml,yml,clojure,markdown,ruby,scss,yaml autocmd BufWritePre <buffer> if !exists('g:keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
 
 
 
@@ -646,6 +646,9 @@ function! RunRubyFile()
       exec ":!node " . t:bjg_ruby_file
     end
 endfunction
+
+" Format JSON
+command! FormatJSON %!python -m json.tool
 
 
 " Load other configuration files

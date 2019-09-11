@@ -34,7 +34,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(node tmux rbenv dotenv git)
+plugins=(node tmux rbenv git)
 
 # User configuration
 # Hide user@hostname if it's expected default user
@@ -127,5 +127,7 @@ alias ls="colorls -lA --sd"
 source $ZSH/oh-my-zsh.sh
 
 source "$HOME/.aliases.local"
+
+eval "$(direnv hook zsh)"
 
 export PATH="/usr/local/sbin:$PATH"
