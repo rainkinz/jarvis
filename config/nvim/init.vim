@@ -635,4 +635,5 @@ command! FormatJSON %!python -m json.tool
 " Load other configuration files
 source ~/.config/nvim/testing.vim
 source ~/.config/nvim/syntax.vim
+source ~/.config/nvim/mapping_overrides.vim
 
