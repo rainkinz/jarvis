@@ -575,7 +575,7 @@ function! ToggleVerbose()
         set verbosefile=
     endif
 endfunction
-autocmd FileType c,cpp,css,dockerfile,elixir,eruby,java,javacc,javascript,go,python,sh,typescript,xml,yml,clojure,markdown,ruby,scss,yaml autocmd BufWritePre <buffer> if !exists('g:keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
+autocmd FileType c,cpp,css,dockerfile,elixir,eruby,java,javacc,javascript,go,python,sh,typescript,xml,yml,clojure,markdown,ruby,rust,scss,terraform,yaml autocmd BufWritePre <buffer> if !exists('g:keep_trailing_whitespace') | call StripTrailingWhitespace() | endif
 
 
 
